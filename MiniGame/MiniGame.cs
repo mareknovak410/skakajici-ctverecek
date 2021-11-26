@@ -40,7 +40,7 @@ namespace MiniGame
                 new Vector2((_sirkaOkna - 50) / 2, (_vyskaOkna - 50) / 2),
                 new SmeroveOvladani(Keys.A, Keys.D, Keys.W, Keys.S),
                 new Rectangle(0, 0, _sirkaOkna, _vyskaOkna),
-                Color.Black, GraphicsDevice
+                Color.Green, GraphicsDevice
             );
         }
 
