@@ -58,7 +58,7 @@ namespace MiniGame
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Pink);
 
             _spriteBatch.Begin();
             _ctverecek.Vykreslit(_spriteBatch);

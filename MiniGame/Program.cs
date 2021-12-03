@@ -1,4 +1,5 @@
 ﻿namespace MiniGame
+
 {
     public static class Program
     {
