@@ -15,6 +15,9 @@ namespace MiniGame
         private Ctverecek _ctverecek;
 
         public MiniGame()
+
+        
+
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -36,7 +39,7 @@ namespace MiniGame
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _ctverecek = new Ctverecek(
-                50, 5,
+                50, 5, 0,
                 new Vector2((_sirkaOkna - 50) / 2, (_vyskaOkna - 50) / 2),
                 new SmeroveOvladani(Keys.A, Keys.D, Keys.W, Keys.S),
                 new Rectangle(0, 0, _sirkaOkna, _vyskaOkna),

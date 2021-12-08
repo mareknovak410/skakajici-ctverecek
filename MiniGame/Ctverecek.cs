@@ -10,6 +10,7 @@ namespace MiniGame
         private GraphicsDevice _zobrazovac { get; set; }
 
         private int _velikost { get; set; }
+        private int _gravitace { get; set; }
         private int _rychlost { get; set; }
 
         private Color _barva { get; set; }
@@ -19,10 +20,11 @@ namespace MiniGame
 
         private SmeroveOvladani _ovladaniPohybu { get; set; }
 
-        public Ctverecek(int velikost, int rychlost, Vector2 pozice, SmeroveOvladani ovladaniPohybu, Rectangle omezeniPohybu, Color barva, GraphicsDevice zobrazovac)
+        public Ctverecek(int velikost, int rychlost, int gravitace, Vector2 pozice, SmeroveOvladani ovladaniPohybu, Rectangle omezeniPohybu, Color barva, GraphicsDevice zobrazovac)
         {
             _velikost = velikost;
             _rychlost = rychlost;
+            _gravitace = gravitace;
 
             _ovladaniPohybu = ovladaniPohybu;
 
@@ -57,10 +59,22 @@ namespace MiniGame
                 smerPohybu -= Vector2.UnitY;
             if (klavesnice.IsKeyDown(_ovladaniPohybu.Dolu))
                 smerPohybu += Vector2.UnitY;
+            if (klavesnice.IsKeyUp(Keys.Space))
+            {
+                _gravitace = 10;
+                if (_gravitace == 10)
+                {
+                    smerPohybu += Vector2.UnitY;
+                }
+            }
+            if (klavesnice.IsKeyDown(Keys.Space))
+            {
+                _gravitace = 0;
+            }
 
             if (smerPohybu != Vector2.Zero)
                 _pozice += _rychlost * Vector2.Normalize(smerPohybu);
-            if ()
+            
         }
 
         public void Aktualizovat(KeyboardState klavesnice)
