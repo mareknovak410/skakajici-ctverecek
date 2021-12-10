@@ -75,6 +75,8 @@ namespace MiniGame
             if (smerPohybu != Vector2.Zero)
                 _pozice += _rychlost * Vector2.Normalize(smerPohybu);
             
+            
+            
         }
 
         public void Aktualizovat(KeyboardState klavesnice)
