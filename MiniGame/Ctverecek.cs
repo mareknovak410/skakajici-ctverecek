@@ -8,7 +8,7 @@ namespace MiniGame
     class Ctverecek
     {
         private GraphicsDevice _zobrazovac { get; set; }
-
+       
         private int _velikost { get; set; }
         private int _gravitace { get; set; }
         private int _rychlost { get; set; }
@@ -74,8 +74,7 @@ namespace MiniGame
 
             if (smerPohybu != Vector2.Zero)
                 _pozice += _rychlost * Vector2.Normalize(smerPohybu);
-            
-            
+
             
         }
 
