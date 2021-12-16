@@ -53,6 +53,7 @@ namespace MiniGame
 
             if (klavesnice.IsKeyDown(Keys.Escape))
                 Exit();
+            
 
             _ctverecek.Aktualizovat(klavesnice);
 

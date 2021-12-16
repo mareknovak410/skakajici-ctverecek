@@ -70,8 +70,7 @@ namespace MiniGame
             {
 
 
-
-                
+                               
 
                 if (_pozice.Y >= 550)
                 {
