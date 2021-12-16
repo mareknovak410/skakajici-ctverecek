@@ -13,7 +13,7 @@ namespace MiniGame
         private int _rychlost { get; set; }
         private int _prikon { get; set; }
         private int _odraz { get; set; }
-        private bool _hop { get; set; }
+        private bool _skok { get; set; }
 
 
         private Color _barva { get; set; }
@@ -29,7 +29,7 @@ namespace MiniGame
             _rychlost = rychlost;
             _prikon = zrychleni;
             _odraz = odraz;
-            _hop = hop;
+            _skok = hop;
 
 
 
@@ -79,16 +79,16 @@ namespace MiniGame
                 if (_pozice.Y >= 550)
                 {
                     _prikon = 0;
-                    _hop = true;
+                    _skok = true;
 
                 }
                 if (_pozice.Y <= 290)
                 {
-                    _hop = false;
+                    _skok = false;
                     _prikon = 1;
 
                 }
-                if (_hop == true)
+                if (_skok == true)
                 {
                     _prikon = 0;
                     _odraz = 5;
