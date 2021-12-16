@@ -75,7 +75,7 @@ namespace MiniGame
                 if (_pozice.Y >= 550)
                 {
                     _prikon = 0;
-                    _skok = true;
+                    _skok = false;
 
                 }
                 if (_pozice.Y <= 290)
