@@ -8,10 +8,13 @@ namespace MiniGame
     class Ctverecek
     {
         private GraphicsDevice _zobrazovac { get; set; }
-       
+
         private int _velikost { get; set; }
-        private int _gravitace { get; set; }
         private int _rychlost { get; set; }
+        private int _zrychleni { get; set; }
+        private int _odraz { get; set; }
+        private bool _hop { get; set; }
+
 
         private Color _barva { get; set; }
 
@@ -20,11 +23,15 @@ namespace MiniGame
 
         private SmeroveOvladani _ovladaniPohybu { get; set; }
 
-        public Ctverecek(int velikost, int rychlost, int gravitace, Vector2 pozice, SmeroveOvladani ovladaniPohybu, Rectangle omezeniPohybu, Color barva, GraphicsDevice zobrazovac)
+        public Ctverecek(int velikost, int rychlost, int zrychleni, int odraz, bool hop, Vector2 pozice, SmeroveOvladani ovladaniPohybu, Rectangle omezeniPohybu, Color barva, GraphicsDevice zobrazovac)
         {
             _velikost = velikost;
             _rychlost = rychlost;
-            _gravitace = gravitace;
+            _zrychleni = zrychleni;
+            _odraz = odraz;
+            _hop = hop;
+
+
 
             _ovladaniPohybu = ovladaniPohybu;
 
@@ -41,9 +48,9 @@ namespace MiniGame
 
             Color[] pixely = new Color[_velikost * _velikost];
             for (int i = 0; i < pixely.Length; i++)
-                pixely[i] = Color.White;
+                pixely[i] = Color.Pink;
             vyslednaTextura.SetData(pixely);
-            
+
             return vyslednaTextura;
         }
 
@@ -61,31 +68,65 @@ namespace MiniGame
                 smerPohybu += Vector2.UnitY;
             if (klavesnice.IsKeyUp(Keys.Space))
             {
-                _gravitace = 10;
-                if (_gravitace == 10)
+
+
+
+                if (klavesnice.IsKeyDown(Keys.Space))
+                {
+                    _zrychleni = 0;
+                }
+
+                if (_pozice.Y >= 550)
+                {
+                    _zrychleni = 0;
+                    _hop = true;
+
+
+
+
+
+                }
+                if (_pozice.Y <= 290)
+                {
+                    _hop = false;
+                    _zrychleni = 1;
+
+                }
+                if (_hop == true)
+                {
+                    _zrychleni = 0;
+                    _odraz = 5;
+                    smerPohybu -= Vector2.UnitY;
+                }
+
+                if (_zrychleni == 0)
+                {
+                    _pozice += _rychlost * Vector2.Normalize(smerPohybu);
+                }
+                if (_zrychleni == 1)
                 {
                     smerPohybu += Vector2.UnitY;
                 }
-            }
-            if (klavesnice.IsKeyDown(Keys.Space))
-            {
-                _gravitace = 0;
-            }
 
+
+
+            }
             if (smerPohybu != Vector2.Zero)
                 _pozice += _rychlost * Vector2.Normalize(smerPohybu);
-
-            
         }
-
         public void Aktualizovat(KeyboardState klavesnice)
         {
             Pohnout(klavesnice);
         }
 
+
         public void Vykreslit(SpriteBatch _vykreslovac)
         {
             _vykreslovac.Draw(_textura, _pozice, _barva);
         }
+
+
+
+
     }
 }

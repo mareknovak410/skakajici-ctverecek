@@ -11,18 +11,17 @@ namespace MiniGame
 
         private int _sirkaOkna = 800;
         private int _vyskaOkna = 600;
+        int _zrychleni = 0;
 
         private Ctverecek _ctverecek;
 
         public MiniGame()
-
-        
-
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             Window.Title = "MiniGame";
             IsMouseVisible = true;
+            _zrychleni = 0;
         }
 
         protected override void Initialize()
@@ -39,9 +38,9 @@ namespace MiniGame
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _ctverecek = new Ctverecek(
-                50, 5, 0,
+                50, 5, 5, 0, false,
                 new Vector2((_sirkaOkna - 50) / 2, (_vyskaOkna - 50) / 2),
-                new SmeroveOvladani(Keys.A, Keys.D, Keys.W, Keys.S),
+                new SmeroveOvladani(Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space),
                 new Rectangle(0, 0, _sirkaOkna, _vyskaOkna),
                 Color.Green, GraphicsDevice
             );
@@ -50,6 +49,7 @@ namespace MiniGame
         protected override void Update(GameTime gameTime)
         {
             KeyboardState klavesnice = Keyboard.GetState();
+
 
             if (klavesnice.IsKeyDown(Keys.Escape))
                 Exit();
