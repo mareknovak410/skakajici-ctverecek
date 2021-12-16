@@ -40,7 +40,7 @@ namespace MiniGame
             _ctverecek = new Ctverecek(
                 50, 5, 5, 0, false,
                 new Vector2((_sirkaOkna - 50) / 2, (_vyskaOkna - 50) / 2),
-                new SmeroveOvladani(Keys.A, Keys.D, Keys.W, Keys.S, Keys.Space),
+                new SmeroveOvladani(Keys.A, Keys.D, Keys.W, Keys.S),
                 new Rectangle(0, 0, _sirkaOkna, _vyskaOkna),
                 Color.Green, GraphicsDevice
             );

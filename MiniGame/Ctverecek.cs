@@ -66,15 +66,12 @@ namespace MiniGame
                 smerPohybu -= Vector2.UnitY;
             if (klavesnice.IsKeyDown(_ovladaniPohybu.Dolu))
                 smerPohybu += Vector2.UnitY;
-            if (klavesnice.IsKeyUp(Keys.Space))
+            if (klavesnice.IsKeyUp(Keys.P))
             {
 
 
 
-                if (klavesnice.IsKeyDown(Keys.Space))
-                {
-                    _prikon = 0;
-                }
+                
 
                 if (_pozice.Y >= 550)
                 {
@@ -95,10 +92,7 @@ namespace MiniGame
                     smerPohybu -= Vector2.UnitY;
                 }
 
-                if (_prikon == 0)
-                {
-                    _pozice += _rychlost * Vector2.Normalize(smerPohybu);
-                }
+                
                 if (_prikon == 1)
                 {
                     smerPohybu += Vector2.UnitY;
