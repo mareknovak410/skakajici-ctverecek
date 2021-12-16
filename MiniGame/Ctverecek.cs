@@ -81,12 +81,8 @@ namespace MiniGame
                     _zrychleni = 0;
                     _hop = true;
 
-
-
-
-
                 }
-                if (_pozice.Y <= 290)
+                if (_pozice.Y <= 320)
                 {
                     _hop = false;
                     _zrychleni = 1;
