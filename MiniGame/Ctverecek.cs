@@ -11,7 +11,7 @@ namespace MiniGame
 
         private int _velikost { get; set; }
         private int _rychlost { get; set; }
-        private int _zrychleni { get; set; }
+        private int _prikon { get; set; }
         private int _odraz { get; set; }
         private bool _hop { get; set; }
 
@@ -27,7 +27,7 @@ namespace MiniGame
         {
             _velikost = velikost;
             _rychlost = rychlost;
-            _zrychleni = zrychleni;
+            _prikon = zrychleni;
             _odraz = odraz;
             _hop = hop;
 
@@ -73,33 +73,33 @@ namespace MiniGame
 
                 if (klavesnice.IsKeyDown(Keys.Space))
                 {
-                    _zrychleni = 0;
+                    _prikon = 0;
                 }
 
                 if (_pozice.Y >= 550)
                 {
-                    _zrychleni = 0;
+                    _prikon = 0;
                     _hop = true;
 
                 }
-                if (_pozice.Y <= 100)
+                if (_pozice.Y <= 290)
                 {
                     _hop = false;
-                    _zrychleni = 1;
+                    _prikon = 1;
 
                 }
                 if (_hop == true)
                 {
-                    _zrychleni = 0;
+                    _prikon = 0;
                     _odraz = 5;
                     smerPohybu -= Vector2.UnitY;
                 }
 
-                if (_zrychleni == 0)
+                if (_prikon == 0)
                 {
                     _pozice += _rychlost * Vector2.Normalize(smerPohybu);
                 }
-                if (_zrychleni == 1)
+                if (_prikon == 1)
                 {
                     smerPohybu += Vector2.UnitY;
                 }
